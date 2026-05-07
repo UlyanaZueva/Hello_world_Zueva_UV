@@ -1,0 +1,28 @@
+-- Таблица продуктов
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50)
+);
+
+
+
+
+--Таблица prices
+CREATE TABLE IF NOT EXISTS prices (
+    id SERIAL PRIMARY KEY,
+    product_id INTEGER REFERENCES products(id),
+    price NUMERIC(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+--Таблица suppliers
+CREATE TABLE IF NOT EXISTS suppliers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    product_id INTEGER REFERENCES products(id)
+);
+
+
+
